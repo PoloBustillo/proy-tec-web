@@ -54,11 +54,11 @@ jobs:
 
       # NOTE: Could be swapped with Vercel, Netlify…
 
-      - name: Upload artifact — Demo (dist)
-        uses: actions/upload-pages-artifact@v1
+      - name: Upload static files as artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
