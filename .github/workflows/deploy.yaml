@@ -55,7 +55,7 @@ jobs:
       # NOTE: Could be swapped with Vercel, Netlify…
 
       - name: Upload static files as artifact
-        id: deployment
+        id: upload
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
