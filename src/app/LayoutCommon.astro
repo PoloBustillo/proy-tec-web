@@ -1,8 +1,6 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
 import pkg from '../../package.json' assert { type: 'json' };
 import { SITE_TITLE } from './constants.js';
-const { class: clazz } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -17,7 +15,7 @@ const { class: clazz } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href={'/src/assets/lighthouse.svg'} />
 		<meta name="author" content="PoloBustillo" />
 		<meta name="copyright" content="MIT" />
-		<ViewTransitions />
+		
 		<script is:inline>
 			if (
 				localStorage.getItem('color-theme') === 'dark' ||
@@ -32,8 +30,6 @@ const { class: clazz } = Astro.props;
 	</head>
 	<body
 		class:list={[
-			//
-			clazz,
 			'bg-gray-50 dark:bg-gray-800',
 			'scrollbar scrollbar-w-3 scrollbar-thumb-rounded-[0.25rem]',
 			'scrollbar-track-slate-200  scrollbar-thumb-gray-400',
@@ -49,7 +45,10 @@ const { class: clazz } = Astro.props;
 			console.log($targetEl, dropdown);
 			// toggle the visibility of the modal when clicking on the button
 			if ($targetEl) {
-				$targetEl.addEventListener('click', () => dropdown.show());
+				$targetEl.addEventListener('click', () => {
+					console.log('OPEN');
+					dropdown.show();
+				});
 			}
 
 			// import 'flowbite/dist/datepicker.js';

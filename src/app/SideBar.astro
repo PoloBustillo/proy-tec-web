@@ -2,6 +2,47 @@
 /* eslint max-lines: 'off' */
 
 import { url } from '../lib/data.js';
+import { Icon } from 'astro-icon/components';
+const links = [
+	{
+		href: '/',
+		text: 'Dashboard',
+		icon: 'mdi:tablet-dashboard',
+	},
+	{
+		href: '/notificaciones',
+		text: 'Notificaciones',
+		icon: 'mdi:bell-ring',
+	},
+	{
+		href: '/usuarios',
+		text: 'Usuarios',
+		icon: 'mdi:user-search',
+	},
+	{
+		href: '/recursos',
+		text: 'Recursos',
+		icon: 'mdi:multimedia',
+	},
+	{
+		href: '/signin',
+		text: 'Sign In',
+		icon: 'mdi:login',
+	},
+	{
+		href: '/signup',
+		text: 'Sign Up',
+		icon: 'mdi:account-plus',
+	},
+
+	{
+		href: '/machine-learning',
+		text: 'ML',
+		icon: 'mdi:integrated-circuit-chip',
+	},
+];
+const { pathname } = Astro.url;
+console.log(pathname);
 ---
 
 <!-- TODO: Dynamic dropdowns -->
@@ -25,6 +66,30 @@ import { url } from '../lib/data.js';
 				class="flex-1 px-3 space-y-1 bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700"
 			>
 				<ul class="pb-2 space-y-2">
+					{links.map((link) => (
+						<li>
+						  <a
+							transition:name={pathname == link.href ? "fade" : "none"}
+							href={link.href}
+							class:list={[
+							  "flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group",
+							  { active: pathname == link.href },
+							]}
+						  >
+							<Icon
+							  class="flex-shrink-0 w-7 h-7 text-gray-500 transition duration-75 dark:text-gray-400"
+							  name={link.icon}
+							/>
+			  
+							<span class="flex-1 ms-3">{link.text}</span>
+							{link.href == "/notificaciones" && (
+							  <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
+								3
+							  </span>
+							)}
+						  </a>
+			            </li>
+					))}
 					<li>
 						<button
 							type="button"
