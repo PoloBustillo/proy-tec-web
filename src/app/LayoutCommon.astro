@@ -27,6 +27,7 @@ import { SITE_TITLE } from './constants.js';
 				document.documentElement.classList.remove('dark');
 			}
 		</script>
+	
 	</head>
 	<body
 		class:list={[
@@ -38,20 +39,7 @@ import { SITE_TITLE } from './constants.js';
 	>
 		<slot />
 		<script>
-			// import 'flowbite';
-			import { Dropdown } from 'flowbite';
-			const $targetEl = document.querySelector('#dropdown-2') as HTMLElement;
-			const dropdown = new Dropdown($targetEl);
-			console.log($targetEl, dropdown);
-			// toggle the visibility of the modal when clicking on the button
-			if ($targetEl) {
-				$targetEl.addEventListener('click', () => {
-					console.log('OPEN');
-					dropdown.show();
-				});
-			}
-
-			// import 'flowbite/dist/datepicker.js';
+			import 'flowbite';
 		</script>
 
 		<style is:global>
